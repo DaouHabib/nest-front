@@ -1,0 +1,66 @@
+<div id="profile" class="page-layout simple tabbed">
+
+    <!-- HEADER -->
+    <div class="header p-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+         fxLayoutAlign.gt-sm="space-between end">
+
+        <div class="user-info" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="start center">
+             <img 
+             src="../../../../assets/images/avatars/default.jpg" alt="Fallbackimage" 
+             [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}" class="profile-image avatar huge">
+                  
+                
+            <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                {{user?.firstName}} {{user?.lastName}}            </div>
+                
+        </div>
+        <div class="actions" fxLayout="row" fxLayoutAlign="end center" [@animate]="{value:'*',params:{delay:'200ms'}}">
+            
+             <button mat-raised-button color="primary" aria-label="Send Message" (click)="openEditUserModal(user)">Edit Informations</button>
+         </div>
+    
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      
+
+                <div id="about" class="p-24" fxLayout="row wrap">
+
+                    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="65">
+                        <div class="profile-box info-box general" fxLayout="column">
+                
+                            <header class="accent">
+                                <div class="title">General Information</div>
+                            </header>
+                
+                            <div class="content">
+                                <div class="info-line">
+                                    <div class="title">Email</div>
+                                    <div class="info">{{user?.email}}</div>
+                                </div>
+                
+                                <div class="info-line">
+                                    <div class="title">Phone</div>
+                                    <div class="info">{{user?.phone}}</div>
+                                </div>
+                
+                               
+                            </div>
+                
+                        </div>
+
+                        </div>
+                        </div>
+
+
+
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

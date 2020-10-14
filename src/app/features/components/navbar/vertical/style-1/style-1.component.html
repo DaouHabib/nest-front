@@ -1,0 +1,79 @@
+<div class="navbar-top"  style="background-color:#2f9be5 !important ;">
+
+    <div class="logo">
+        <img class="logo-icon" src="assets/images/logos/fuse.svg">
+        <span class="logo-text secondary-text">FUSE</span>
+    </div>
+
+    <div class="buttons">
+
+        <button mat-icon-button class="toggle-sidebar-folded"
+                (click)="toggleSidebarFolded()" fxHide.lt-lg>
+            <mat-icon class="secondary-text">menu</mat-icon>
+        </button>
+
+        <button mat-icon-button class="toggle-sidebar-opened"
+                (click)="toggleSidebarOpened()" fxHide.gt-md>
+            <mat-icon class="secondary-text">arrow_back</mat-icon>
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="navbar-scroll-container"  style="background-color: white !important ;"
+     fusePerfectScrollbar [fusePerfectScrollbarOptions]="{suppressScrollX: true}">
+
+    <div class="user" fxLayout="column"  style="background-color:#2f9be5 !important ;">
+
+        <div class="h3 username">{{user?.firstName}} {{user?.lastName}}</div>
+        <div class="h5 email hint-text mt-8">{{user?.email}}</div>
+        <div class="avatar-container" [ngClass]="fuseConfig.layout.navbar.primaryBackground">
+            <img 
+            class="avatar"
+            img src="../../../../assets/images/avatars/default.jpg" alt="Fallbackimage" 
+            class="avatar"
+                    >
+                       
+        </div>
+
+    </div>
+
+    <div *ngIf="isAdmin" class="navbar-content" >
+        <div class="nav">
+            <div class="nav-item">
+                <a class="nav-link" routerLink="home">
+                    <mat-icon class="nav-link-icon">home</mat-icon>
+                    <span class="nav-link-title">Sondage</span>
+                </a>
+                <a class="nav-link" routerLink="custumers">
+                    <mat-icon class="nav-link-icon">group</mat-icon>
+                    <span class="nav-link-title">Custumers</span>
+                </a>
+                <a class="nav-link" routerLink="custumers/profile">
+                    <mat-icon class="nav-link-icon">business</mat-icon>
+                    <span class="nav-link-title">Profile</span>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="isUser" class="navbar-content" >
+        <div class="nav">
+            <div class="nav-item">
+                <a class="nav-link" routerLink="home">
+                    <mat-icon class="nav-link-icon">home</mat-icon>
+                    <span class="nav-link-title">Sondage</span>
+                </a>
+               
+                <a class="nav-link" routerLink="custumers/profile">
+                    <mat-icon class="nav-link-icon">perm_identity</mat-icon>
+                    <span class="nav-link-title">Profile</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
