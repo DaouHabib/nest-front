@@ -15,10 +15,11 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { ForgetPasswordFormComponent } from './forget-password-form/forget-password-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, AuthenticationComponent, ForgetPasswordComponent, ForgetPasswordFormComponent],
+  declarations: [LoginComponent, AuthenticationComponent, ForgetPasswordComponent, ForgetPasswordFormComponent,ChangePasswordComponent],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,

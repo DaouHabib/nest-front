@@ -20,8 +20,9 @@ export class UserService {
     Adduser(user: any): Observable<any> {
         return this.http.post<any>( `${APIS.AUTH}/signup`,user);
     }
-    sendEmail(email:any):any {
-        return this.http.get<any>("http://localhost:3000/users/sendEmail",email);
+    sendEmail(email:any): any {
+
+        return this.http.post<any>("http://localhost:3000/users/sendEmail",email);
     }
     
     getAll(): Observable<any> {

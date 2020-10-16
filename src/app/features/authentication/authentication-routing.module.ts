@@ -4,6 +4,7 @@ import { LoginComponent } from "./login/login.component";
 import { AuthenticationComponent } from './authentication.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ForgetPasswordFormComponent } from './forget-password-form/forget-password-form.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: "forgotPassword",
         component: ForgetPasswordFormComponent
+      },
+      {
+        path: "changePassword/:payload",
+        component: ChangePasswordComponent
       }
     ]
   },
