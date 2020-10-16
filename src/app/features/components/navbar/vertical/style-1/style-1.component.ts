@@ -171,7 +171,6 @@ export class NavbarVerticalStyle1Component implements OnInit, OnDestroy
       let token=  localStorage.getItem('connectedId');
      await  this._serviceUser.getuserByid(token).subscribe(data=>{
         this.user = data;
-        console.log(data);
         if(data.Role =="ADMIN"){
             this.isAdmin=true
         }

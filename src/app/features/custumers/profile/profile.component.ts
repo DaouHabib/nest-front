@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
    let id = localStorage.getItem('connectedId') ;
     this.userService.getuserByid(id).subscribe(data=>{
     this.user = data;
-    console.log(data);
   });
  
  }
@@ -45,7 +44,6 @@ export class ProfileComponent implements OnInit {
 
   });
   dialogRef.afterClosed().subscribe((result) => {
-    console.log(data);
       if (result) {
           this.userService.edit(result, data.id).subscribe(
               user => {

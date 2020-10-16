@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
           .subscribe(
               (data) =>{
                   (this.sondageDataSource = new MatTableDataSource<any>(data))
-              console.log(data);});
+             });
   }
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -86,7 +86,6 @@ openEditSondageModal(data): void {
 
   });
   dialogRef.afterClosed().subscribe((result) => {
-    console.log(data);
       if (result) {
           this.sondageService.edit(result, data.id).subscribe(
               user => {

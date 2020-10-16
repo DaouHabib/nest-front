@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, OnInit, Output, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
-import {  MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { fuseAnimations } from '../../../../@fuse/animations';
@@ -21,63 +21,63 @@ export class UserListComponent implements OnInit {
   constructor(public dialog: MatDialog, private userService: UserService, private toastService: ToastService) { }
 
   ngOnInit(): void {
-      this.getallcustumers();
+    this.getallcustumers();
   }
 
 
   getallcustumers(): void {
     this.userService
-        .getAll()
-        .subscribe(
-            (data) =>{
-                (this.userDataSource = new MatTableDataSource<any>(data))
-            console.log(data);});
-}
+      .getAll()
+      .subscribe(
+        (data) => {
+          (this.userDataSource = new MatTableDataSource<any>(data))
+     
+        });
+  }
 
-@ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-displayedColumns: string[] = [
-   
+  displayedColumns: string[] = [
+
     "email",
     "phone",
     "actions",
-];
+  ];
 
-ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes["userDataSource"].currentValue != undefined) {
-        this.userDataSource.paginator = this.paginator;
+      this.userDataSource.paginator = this.paginator;
     }
-};
+  };
 
 
 
-notif()
-{
+  notif() {
     Swal.fire({
-        title: 'Are you sure?',
-        text: 'You will not be able to recover this imaginary file!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, keep it'
-      }).then((result) => {
-        if (result.value) {
-          Swal.fire(
-            'Deleted!',
-            'Your imaginary file has been deleted.',
-            'success'
-          )
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this imaginary file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+        )
         // For more information about handling dismissals please visit
         // https://sweetalert2.github.io/#handling-dismissals
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire(
-            'Cancelled',
-            'Your imaginary file is safe :)',
-            'error'
-          )
-        }
-      })
-}
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+  }
 
 
 }

@@ -10,32 +10,82 @@ import * as Highcharts from 'highcharts';
 export class StatsComponent implements OnInit {
   highcharts = Highcharts;
   chartOptions: any;
+  chartOptions2: any;
+
   constructor(private sondageService :SondageService) { }
 
   ngOnInit(): void {
     this.initchart();
+    this.intPiechart();
   }
+
+  intPiechart() {
+   let connect = localStorage.getItem('connectedId');
+   this.sondageService.getbestVotes(connect).subscribe(res => {
+         console.log(res);
+         this.chartOptions2 = {
+            chart: {
+               plotBorderWidth: null,
+               plotShadow: false
+            },
+            title: {
+               text: 'Best react on post :</br>'+res[0].question
+            },
+            tooltip: {
+               pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+               pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+
+                  dataLabels: {
+                     enabled: false
+                  },
+
+                  showInLegend: true
+               }
+            },
+            series: [{
+               type: 'pie',
+               name: 'Browser share',
+               data: [
+                  ['Oui', res[0]?.oui],
+                  {
+                     name: 'non',
+                     y: res[0]?.non,
+                     sliced: true,
+                     selected: true
+                  },
+
+               ]
+            }]
+         };
+  
+   })
+}
+
+
+
   initchart() {
        let connect = localStorage.getItem('connectedId');
        this.sondageService.getlastVotes(connect).subscribe(res => {
-          console.log(res);
         let e1,e2,e3 :any;
           e1=res[0];
           e2=res[1];
           e3=res[2];
-
           this.chartOptions = {
              chart: {
                 type: 'column'
              },
              title: {
-                text: 'Statistique des votes'
+                text: 'Last Posts'
              },
              subtitle: {
                 text: ''
              },
              xAxis: {
-                categories: [e1.question,e2.question,e3.question],
+                categories: [e1?.question,e2?.question,e3?.question],
                 crosshair: true
              },
              yAxis: {
@@ -57,11 +107,11 @@ export class StatsComponent implements OnInit {
              },
              series: [{
                 name: 'Votes oui',
-                data: [e1.oui,e2.oui,e3.oui]
+                data: [e1?.oui,e2?.oui,e3?.oui]
              },
              {
                 name: 'Votes Non',
-                data: [e1.non,e2.non,e3.non]
+                data: [e1?.non,e2?.non,e3?.non]
              },
 
              ]

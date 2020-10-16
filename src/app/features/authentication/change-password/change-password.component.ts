@@ -69,12 +69,11 @@ export class ChangePasswordComponent implements OnInit {
  public ResetPassword(){
 if(this.forgotPasswordForm.value.password ==this.forgotPasswordForm.value.Retypepassword){
   console.log("True");
-
 const UserT = this.user;
 
 UserT.password =this.forgotPasswordForm.value.password  ;
 console.log(UserT);
-  this.userservice.edit(UserT, this.user._id).subscribe(
+  this.userservice.edit(UserT, UserT.id).subscribe(
     user => {
       console.log(user);
         this.toastService.success("Password Edited", "Sucess");

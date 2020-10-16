@@ -53,5 +53,8 @@ export class SondageService {
     getlastVotes(id: string): Observable<any> {
         return this.http.get<any[]>(`${APIS.SONDAGE}/last/${id}`);
     }
+    getbestVotes(id: string): Observable<any> {
+        return this.http.get<any[]>(`${APIS.SONDAGE}/best/${id}`);
+    }
 }
 
