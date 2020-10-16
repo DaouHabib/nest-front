@@ -18,12 +18,15 @@
       
       <ng-container matColumnDef="oui">
         <th mat-header-cell *matHeaderCellDef>Oui </th>
-        <td mat-cell *matCellDef="let element">{{(element.oui*100)/(element.oui+element.non)}}%</td>
+        <td mat-cell *matCellDef="let element"><p *ngIf="element.oui!=0; else elseOui">{{(element?.oui*100)/(element.oui+element.non)}}%</p>
+          <ng-template #elseOui>{{element.oui}}</ng-template></td>
       </ng-container>
 
       <ng-container matColumnDef="non">
         <th mat-header-cell *matHeaderCellDef>Non </th>
-        <td mat-cell *matCellDef="let element"> {{(element.non*100)/(element.oui+element.non)}}%</td>
+        <td mat-cell *matCellDef="let element" ><p *ngIf="element.non!=0; else elseNon"> {{(element?.non*100)/(element.oui+element.non)}}%</p>
+          <ng-template #elseNon>{{element.non}}</ng-template>
+        </td>
       </ng-container>
        <!-- actions -->
        <ng-container matColumnDef="actions">
@@ -33,7 +36,7 @@
           <mat-icon (click)="voteOui(row.id)" class="nav-link-icon">done</mat-icon>
           <mat-icon (click)="voteNon(row.id)" class="nav-link-icon">cancel</mat-icon>
           <mat-icon *ngIf="row.userId==connectedUser" (click)="openEditSondageModal(row)" class="nav-link-icon">edit</mat-icon>
-          <mat-icon *ngIf="row.userId==connectedUser" (click)="delete(row.id)" class="nav-link-icon">delete</mat-icon>
+          <mat-icon *ngIf="row.userId==connectedUser" (click)="delete(row)" class="nav-link-icon">delete</mat-icon>
 
 
         </mat-cell>

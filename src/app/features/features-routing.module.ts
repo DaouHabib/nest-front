@@ -17,10 +17,13 @@ const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
-      // ADmin part
       {
         path: 'custumers',
         loadChildren: () => import('./custumers/custumers.module').then(m => m.CustumersModule)
+      },
+      {
+        path: 'stats',
+        loadChildren: () => import('./stats/stats.module').then(m => m.StatsModule)
       },
      
     ]

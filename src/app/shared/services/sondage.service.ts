@@ -50,6 +50,8 @@ export class SondageService {
         return this.http.delete(`${APIS.SONDAGE}/${id}`);
     }
 
-
+    getlastVotes(id: string): Observable<any> {
+        return this.http.get<any[]>(`${APIS.SONDAGE}/last/${id}`);
+    }
 }
 

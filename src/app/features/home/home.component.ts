@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
                     }
                 },
                 error => {
-                    this.toastService.error("error", "check informations");
+                    this.toastService.error("error", "You passed the limits try later");
                 }
             );
         }
@@ -134,7 +134,7 @@ voteNon(id:string){
   });
   }
   
-  delete(id:string)
+  delete(data)
   {
       Swal.fire({
           title: 'Are you sure?',
@@ -145,7 +145,7 @@ voteNon(id:string){
           cancelButtonText: 'No, keep it'
         }).then((result) => {
           if (result.value) {
-            this.sondageService.delete(id);
+            this.sondageService.delete(data.id).subscribe(res=>{this.getallSondages() ;console.log('deleted')})
             Swal.fire(
               'Deleted!',
               'Your imaginary file has been deleted.',
